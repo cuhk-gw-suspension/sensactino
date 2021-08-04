@@ -34,6 +34,22 @@ class Sensor:
         """
         self.Serial.close()
 
+    def talk(self):
+        """Send a character to arduino so that arduino output a measurement.
+
+        Returns
+        -------
+        value : int
+        """
+        self.Serial.write(b"o")
+        tmp =bytearray(8)
+        tmp[0:] = self.Serial.read(8)
+        while tmp[:1] != header:
+            tmp <<= 1
+            tmp[-1:] = self.Serial.read()
+
+
+
     def measure(self, if_error="use last value"):
         """Return the digital value of the last measurement from the sensor.
 
