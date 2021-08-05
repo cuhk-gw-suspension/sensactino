@@ -7,10 +7,13 @@ const uint8_t channel = 0;
 const int nbyte_msg = 7;    // byte length of the msg
 const byte header = (byte) '\t';
 const byte footer = (byte) '\n';
-const char cmd = 'o';   // character to receive for print once.
+const char measure = 'r';   // character to receive for print value once. */
+const char getInfo = 'i';   // character to receive for printing info of the devcice. */
+
+const char info[] = "";     // infomation about the device.
 
 volatile bool RDY = false;
-
+volatile char cmd;
 
 template <typename T>
 void fastSerialPrintln(T value){
@@ -20,8 +23,8 @@ void fastSerialPrintln(T value){
   while (Serial.availableForWrite() < nbyte_msg) { ;}
 
   // parse value to bytes in msg array
-  for (int i = nbyte_msg - 2 - len; i < nbyte_msg - 2; i++) {
-      msg[i] = (byte) ((value >> (len-i-1)*8) & 0xFF);
+  for (int i = 0; i < len; i++) {
+      msg[nbyte_msg-2-len+i] = (byte) ((value >> (len-i-1)*8) & 0xFF);
   }
   
   // checksum using XOR
@@ -62,8 +65,11 @@ void loop() {
   delayMicroseconds(10);
   
   if (Serial.available() > 0){
-    if (Serial.read() == cmd)
+    cmd = Serial.read();
+    if (cmd == measure)
       fastSerialPrintln(sensorValue);
+    if (cmd == getInfo)
+      Serial.println(info);
   }
 }
 

@@ -1,0 +1,146 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+%	docs/Makefile	/^%: Makefile$/;"	t
+Actuator	sensactino/actuator.py	/^class Actuator:$/;"	c
+BUILDDIR	docs/Makefile	/^BUILDDIR      = build$/;"	m
+BUILDDIR	docs/make.bat	/^set BUILDDIR=build$/;"	v
+CHANGELOG	README.rst	/^CHANGELOG$/;"	S	section:Standards and Tools
+CHANGELOG	docs/source/for_developers.rst	/^CHANGELOG$/;"	S	section:Standards and Tools
+Cheat sheet	README.rst	/^Cheat sheet$/;"	s	chapter:For Developers
+Cheat sheet	docs/source/for_developers.rst	/^Cheat sheet$/;"	s	chapter:For Developers
+Coding style	README.rst	/^Coding style$/;"	S	section:Standards and Tools
+Coding style	docs/source/for_developers.rst	/^Coding style$/;"	S	section:Standards and Tools
+Dependencies	README.rst	/^Dependencies$/;"	s	chapter:Getting Started
+Dependencies	docs/source/getting_started.rst	/^Dependencies$/;"	s	chapter:Getting Started
+Documentation	README.rst	/^Documentation$/;"	S	section:Standards and Tools
+Documentation	docs/source/for_developers.rst	/^Documentation$/;"	S	section:Standards and Tools
+For Developers	README.rst	/^For Developers$/;"	c
+For Developers	docs/source/for_developers.rst	/^For Developers$/;"	c
+Getting Started	README.rst	/^Getting Started$/;"	c
+Getting Started	docs/source/getting_started.rst	/^Getting Started$/;"	c
+How to Contribute	README.rst	/^How to Contribute$/;"	c
+How to Contribute	docs/source/how_to_contribute.rst	/^How to Contribute$/;"	c
+Indices and tables	docs/source/index.rst	/^Indices and tables$/;"	c
+Install from source	README.rst	/^Install from source$/;"	s	chapter:Getting Started
+Install from source	docs/source/getting_started.rst	/^Install from source$/;"	s	chapter:Getting Started
+Library Reference	docs/source/library_reference.rst	/^Library Reference$/;"	c
+MAJOR	setup.py	/^MAJOR = 0$/;"	v
+MICRO	setup.py	/^MICRO = 0$/;"	v
+MINOR	setup.py	/^MINOR = 0$/;"	v
+My Python Library	docs/source/index.rst	/^My Python Library$/;"	c
+MyParseNumber_h	arduino_script/stepper/MyParseNumber.h	/^    #define MyParseNumber_h$/;"	d
+MyStepper_h	arduino_script/stepper/MyStepper.h	/^    #define MyStepper_h$/;"	d
+Note on installing dependencies	docs/source/getting_started.rst	/^Note on installing dependencies$/;"	S	section:Dependencies
+Optional	README.rst	/^Optional$/;"	S	section:Dependencies
+Optional	docs/source/getting_started.rst	/^Optional$/;"	S	section:Dependencies
+Packaging	README.rst	/^Packaging$/;"	S	section:Standards and Tools
+Packaging	docs/source/for_developers.rst	/^Packaging$/;"	S	section:Standards and Tools
+ReadLine	sensactino/core/fastread.py	/^class ReadLine:$/;"	c
+Required	README.rst	/^Required$/;"	S	section:Dependencies
+Required	docs/source/getting_started.rst	/^Required$/;"	S	section:Dependencies
+SOURCEDIR	docs/Makefile	/^SOURCEDIR     = source$/;"	m
+SOURCEDIR	docs/make.bat	/^set SOURCEDIR=source$/;"	v
+SPHINXBUILD	docs/Makefile	/^SPHINXBUILD   ?= sphinx-build$/;"	m
+SPHINXBUILD	docs/make.bat	/^	set SPHINXBUILD=sphinx-build$/;"	v
+SPHINXOPTS	docs/Makefile	/^SPHINXOPTS    ?=$/;"	m
+Sensor	sensactino/sensor.py	/^class Sensor:$/;"	c
+Serial Monitor	README.rst	/^Serial Monitor$/;"	c
+Sphinx	README.rst	/^Sphinx$/;"	S	section:Cheat sheet
+Sphinx	docs/source/for_developers.rst	/^Sphinx$/;"	S	section:Cheat sheet
+Standards and Tools	README.rst	/^Standards and Tools$/;"	s	chapter:For Developers
+Standards and Tools	docs/source/for_developers.rst	/^Standards and Tools$/;"	s	chapter:For Developers
+Stepper	arduino_script/stepper/MyStepper.cpp	/^Stepper::Stepper(uint8_t pul_pin, uint8_t dir_pin){$/;"	f	class:Stepper
+Stepper	arduino_script/stepper/MyStepper.h	/^class Stepper{$/;"	c
+Stepper	sensactino/stepper.py	/^class Stepper:$/;"	c
+VERSION	setup.py	/^VERSION = '%d.%d.%d'%(MAJOR,MINOR,MICRO)$/;"	v
+Versioning	README.rst	/^Versioning$/;"	S	section:Standards and Tools
+Versioning	docs/source/for_developers.rst	/^Versioning$/;"	S	section:Standards and Tools
+YIELD	arduino_script/stepper/MyParseNumber.h	/^    #define YIELD /;"	d
+YIELD	arduino_script/stepper/MyParseNumber.h	/^    #define YIELD;/;"	d
+YIELD	arduino_script/stepper/MyStepper.h	/^    #define YIELD /;"	d
+YIELD	arduino_script/stepper/MyStepper.h	/^    #define YIELD;/;"	d
+__enter__	sensactino/actuator.py	/^    def __enter__(self):$/;"	m	class:Actuator
+__enter__	sensactino/sensor.py	/^    def __enter__(self):$/;"	m	class:Sensor
+__enter__	sensactino/stepper.py	/^    def __enter__(self):$/;"	m	class:Stepper
+__exit__	sensactino/actuator.py	/^    def __exit__(self, exc_type, exc_value, traceback):$/;"	m	class:Actuator
+__exit__	sensactino/sensor.py	/^    def __exit__(self, exc_type, exc_value, traceback):$/;"	m	class:Sensor
+__exit__	sensactino/stepper.py	/^    def __exit__(self, exc_type, exc_value, traceback):$/;"	m	class:Stepper
+__init__	sensactino/actuator.py	/^    def __init__(self, port, baudrate, timeout=1):$/;"	m	class:Actuator
+__init__	sensactino/core/fastread.py	/^    def __init__(self, serial_device):$/;"	m	class:ReadLine
+__init__	sensactino/sensor.py	/^    def __init__(self, port, baudrate, timeout=1):$/;"	m	class:Sensor
+__init__	sensactino/stepper.py	/^    def __init__(self, port, baudrate, timeout=1):$/;"	m	class:Stepper
+_addsum	sensactino/core/utils.py	/^def _addsum(arr):$/;"	f
+_bound_set	arduino_script/stepper/MyStepper.h	/^    bool _bound_set = false;$/;"	m	class:Stepper	typeref:typename:bool
+_checksum	sensactino/core/utils.py	/^def _checksum(arr):$/;"	f
+_currentPos	arduino_script/stepper/MyStepper.h	/^    volatile long _currentPos;$/;"	m	class:Stepper	typeref:typename:volatile long
+_dir_pin	arduino_script/stepper/MyStepper.h	/^    uint8_t _dir_pin;$/;"	m	class:Stepper	typeref:typename:uint8_t
+_direction	arduino_script/stepper/MyStepper.h	/^    bool _direction;$/;"	m	class:Stepper	typeref:typename:bool
+_int2bytes	sensactino/core/utils.py	/^def _int2bytes(x, byteorder="big", signed=True):$/;"	f
+_max_dist_from_0	arduino_script/stepper/MyStepper.h	/^    long _max_dist_from_0;$/;"	m	class:Stepper	typeref:typename:long
+_pul_pin	arduino_script/stepper/MyStepper.h	/^    uint8_t _pul_pin;$/;"	m	class:Stepper	typeref:typename:uint8_t
+_pulse_width	arduino_script/stepper/MyStepper.h	/^    const unsigned int _pulse_width = 3;$/;"	m	class:Stepper	typeref:typename:const unsigned int
+_send_command	sensactino/core/utils.py	/^def _send_command(serial_device, cmd):$/;"	f
+_step_interval	arduino_script/stepper/MyStepper.h	/^    unsigned int _step_interval;$/;"	m	class:Stepper	typeref:typename:unsigned int
+_targetPos	arduino_script/stepper/MyStepper.h	/^    volatile long _targetPos;$/;"	m	class:Stepper	typeref:typename:volatile long
+author	docs/source/conf.py	/^author = 'Tsang Terrence Tak Lun'$/;"	v
+base	docs/source/_static/logo.svg	/^     inkscape:window-maximized="0" \/>$/;"	i
+ceildiv	sensactino/core/utils.py	/^def ceildiv(a, b):$/;"	f
+copyright	docs/source/conf.py	/^copyright = '2020, Tsang Terrence Tak Lun'$/;"	v
+defs857	docs/source/_static/logo.svg	/^     id="defs857" \/>$/;"	i
+distanceToGo	arduino_script/stepper/MyStepper.cpp	/^long Stepper::distanceToGo(){$/;"	f	class:Stepper	typeref:typename:long
+end	docs/make.bat	/^:end$/;"	l
+exclude_patterns	docs/source/conf.py	/^exclude_patterns = []$/;"	v
+extensions	docs/source/conf.py	/^extensions = [$/;"	v
+getPosition	arduino_script/stepper/MyStepper.cpp	/^long Stepper::getPosition(){$/;"	f	class:Stepper	typeref:typename:long
+hello world	docs/source/library_reference.rst	/^hello world$/;"	s	chapter:Library Reference
+help	docs/Makefile	/^help:$/;"	t
+help	docs/make.bat	/^:help$/;"	l
+here	setup.py	/^here = pathlib.Path(__file__).parent.resolve()$/;"	v
+html_logo	docs/source/conf.py	/^html_logo = '_static\/logo.svg'$/;"	v
+html_static_path	docs/source/conf.py	/^html_static_path = ['_static']$/;"	v
+html_theme	docs/source/conf.py	/^html_theme = 'sphinx_rtd_theme'$/;"	v
+initOutputPins	arduino_script/stepper/MyStepper.cpp	/^void Stepper::initOutputPins(uint8_t pin) {$/;"	f	class:Stepper	typeref:typename:void
+layer1	docs/source/_static/logo.svg	/^     id="layer1">$/;"	i
+locatePinSector	arduino_script/stepper/MyStepper.cpp	/^char Stepper::locatePinSector(uint8_t pin){ $/;"	f	class:Stepper	typeref:typename:char
+long_description	setup.py	/^long_description = (here \/ 'README.rst').read_text(encoding='utf-8')$/;"	v
+master_doc	docs/source/conf.py	/^master_doc = 'index' # In case it's defaulted to another file.$/;"	v
+measure	sensactino/sensor.py	/^    def measure(self):$/;"	m	class:Sensor
+metadata860	docs/source/_static/logo.svg	/^     id="metadata860">$/;"	i
+move	sensactino/stepper.py	/^    def move(self, displacement):$/;"	m	class:Stepper
+moveTo	arduino_script/stepper/MyStepper.cpp	/^void Stepper::moveTo(long absolute){$/;"	f	class:Stepper	typeref:typename:void
+moveto	sensactino/stepper.py	/^    def moveto(self, position):$/;"	m	class:Stepper
+myParseInt_	arduino_script/stepper/MyParseNumber.cpp	/^void myParseInt_(long *pos, char *number, char delimiter){$/;"	f	typeref:typename:void
+np	sensactino/stepper.py	/^import numpy as np$/;"	I
+out	sensactino/actuator.py	/^    def out(self, value):$/;"	m	class:Actuator
+project	docs/source/conf.py	/^project = 'mypythonlibrary'$/;"	v
+read	sensactino/sensor.py	/^    def read(self):$/;"	m	class:Sensor
+readPin	arduino_script/stepper/MyStepper.cpp	/^bool readPin(uint8_t pin){$/;"	f	typeref:typename:bool
+readchunks	sensactino/core/fastread.py	/^    def readchunks(self, chunk_size=7, header=b'\\t', footer=b'\\n'):$/;"	m	class:ReadLine
+readlast	sensactino/core/fastread.py	/^    def readlast(self, chunk_size=7, header=b'\\t', footer=b'\\n'):$/;"	m	class:ReadLine
+readonce	sensactino/core/fastread.py	/^    def readonce(self, chunk_size=7, header=b'\\t', footer=b'\\n'):$/;"	m	class:ReadLine
+rect1431	docs/source/_static/logo.svg	/^       ry="18.6" \/>$/;"	i
+release	docs/source/conf.py	/^release = '0.0.0'$/;"	v
+run	arduino_script/stepper/MyStepper.cpp	/^void Stepper::run(){$/;"	f	class:Stepper	typeref:typename:void
+setDirection	arduino_script/stepper/MyStepper.cpp	/^void Stepper::setDirection(bool direction){$/;"	f	class:Stepper	typeref:typename:void
+setOutputPins	arduino_script/stepper/MyStepper.cpp	/^void Stepper::setOutputPins(uint8_t pin, bool state){$/;"	f	class:Stepper	typeref:typename:void
+setPosition	arduino_script/stepper/MyStepper.cpp	/^void Stepper::setPosition(long pos){$/;"	f	class:Stepper	typeref:typename:void
+setSpeed	arduino_script/stepper/MyStepper.cpp	/^void Stepper::setSpeed(unsigned int speed){$/;"	f	class:Stepper	typeref:typename:void
+step	arduino_script/stepper/MyStepper.cpp	/^void Stepper::step(){$/;"	f	class:Stepper	typeref:typename:void
+sweep	arduino_script/stepper/MyStepper.cpp	/^void Stepper::sweep(uint8_t pin1, uint8_t pin2){$/;"	f	class:Stepper	typeref:typename:void
+talk	sensactino/sensor.py	/^    def talk(self):$/;"	m	class:Sensor
+templates_path	docs/source/conf.py	/^templates_path = ['_templates']$/;"	v
+text1435	docs/source/_static/logo.svg	/^       id="text1435"><tspan$/;"	i
+text1439	docs/source/_static/logo.svg	/^       id="text1439"><tspan$/;"	i
+text1443	docs/source/_static/logo.svg	/^       id="text1443"><tspan$/;"	i
+text1449	docs/source/_static/logo.svg	/^       id="text1449"><tspan$/;"	i
+tspan1433	docs/source/_static/logo.svg	/^         y="60.478451" \/><\/text>$/;"	i
+tspan1437	docs/source/_static/logo.svg	/^         y="70.4216" \/><\/text>$/;"	i
+tspan1441	docs/source/_static/logo.svg	/^         y="66.143028"><\/tspan><tspan$/;"	i
+tspan1445	docs/source/_static/logo.svg	/^         id="tspan1445" \/><\/text>$/;"	i
+tspan1447	docs/source/_static/logo.svg	/^         y="55.516674">My Python<\/tspan><tspan$/;"	i
+tspan1451	docs/source/_static/logo.svg	/^         id="tspan1451">Library<\/tspan><\/text>$/;"	i

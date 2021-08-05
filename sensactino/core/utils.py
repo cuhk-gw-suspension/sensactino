@@ -4,7 +4,7 @@ def _checksum(arr):
 
     Parameters
     ----------
-    arr : bytes or bytearray
+    arr : bytes, bytearray, or list of int.
         Bytes to be checksum, including the checksum byte.
 
     Returns
@@ -24,7 +24,7 @@ def _addsum(arr):
 
     Parameters
     ----------
-    arr : bytes or bytearray
+    arr : bytes, bytearray, or list of int
         Bytes to be addsum.
 
     Returns
@@ -32,10 +32,11 @@ def _addsum(arr):
     addsum: bytes
         the checksum byte.
     """
-    if not isinstance(arr, (bytes, bytearray)):
+    if not isinstance(arr, (bytes, bytearray, list)):
         raise TypeError("invalid type of arr:", type(arr))
     if len(arr) == 0:
         raise ValueError("empty array")
+    arr = list(arr)
     addsum = arr[0]
     for byte in arr[1:]:
         addsum ^= byte

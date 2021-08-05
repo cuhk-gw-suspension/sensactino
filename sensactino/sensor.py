@@ -1,4 +1,5 @@
-import serial
+from serial import Serial
+import time
 from .core.fastread import ReadLine
 from .core.utils import _checksum
 
@@ -18,13 +19,15 @@ class Sensor:
         self._serial_para = {"port": port,
                              "baudrate": baudrate,
                              "timeout": timeout}
+        self._value = 0
 
     def __enter__(self):
         """Open serial port to the stepper using parameters from __init__.
         """
-        self.Serial = serial.Serial(**self._serial_para)
+        self.Serial = Serial(**self._serial_para)
+        time.sleep(.1)
         self.Serial.flush()
-        while( self.Serial.out_waiting != 0):       # wait for flush to finish
+        while( self.Serial.in_waiting != 0):       # wait for flush to finish
             time.sleep(.001)
         self.FastRead = ReadLine(self.Serial)
         return self
@@ -34,8 +37,16 @@ class Sensor:
         """
         self.Serial.close()
 
-    def measure(self, if_error="use last value"):
-        """Return the digital value of the last measurement from the sensor.
+    def get_info(self):
+        """Read info about the sensor.
+        """
+        self.Serial.write(b"i")
+        info = self.Serial.readline()
+        print(info)
+        return info
+
+    def measure(self, if_error="l"):
+        """Send a character to arduino so that arduino output a measurement.
 
         Parameters
         ----------
@@ -49,36 +60,54 @@ class Sensor:
         -------
         value : int
         """
-        expr = ["l", "r", "use last value", "read again"]
-        checklist = [if_error is word for word in expr]
-        if not any(checklist):
-            raise ValueError("argument for if_error does not match any"
-                             + "instruction")
-        line = self.FastRead.lastline()
-        line = line.rstrip()
-
-        if _checksum(line):
-            self._value = int.from_bytes(line[:-1],
-                                         byteorder="big",
-                                         signed=True)
-            return self._value
+        self.Serial.write(b"r")
+        msg = self.FastRead.readonce()
+        if msg is None:
+            if if_error == "l" or if_error == "use last value":
+                value = self._value
+            if if_error == "r" or if_error == "read again":
+                self.measure(if_error=if_error)
         else:
-            if if_error == 'r' or if_error == 'read again':
-                self.measure(if_error='r')
-            elif if_error == 'l' or if_error == 'use last value':
-                return self._value
+            value = int.from_bytes(msg, byteorder="big", signed=True)
+            self._value = value
+        return value
+
+
+    # def measure_last(self):
+    #     """Returns
+
+        # Parameters
+        # ----------
+        # if_error : str
+        #     The instruction when checksum is not correct.
+        #     Choose from "l", "r", "use last value", "read again".
+        #     "l", "use last value": using the last measurement.
+        #     "r", "read again": measure recusively until checksum matches
+
+    #     Returns
+    #     -------
+    #     value : int
+    #     """
+    #     line = self.FastRead.readlast(chunk_size=7,
+    #                                   header=b'\t',
+    #                                   footer=b'\n')
+    #     value = int.from_bytes(line, byteorder="big", signed=True)
+    #     return value
 
     def read(self):
-        """Return the lines of bytes received from the sensor until last b'\\n'.
-        Used for debugging.
+        """Read all bytes from the sensor.
+        Use for debugging.
+        Caution: This method reads byte regardless of whether the transmission
+        of data is in progress.
 
         Return
         -------
         line : bytes
-             All bytes until the last b'\\n'.
+             All bytes in the buffer.
         """
-        return self.FastRead.readline()
-
+        n = self.Serial.in_waiting
+        line = self.Serial.read(n)
+        return line
 
 
 
