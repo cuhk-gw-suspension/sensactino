@@ -97,6 +97,7 @@ end	docs/make.bat	/^:end$/;"	l
 exclude_patterns	docs/source/conf.py	/^exclude_patterns = []$/;"	v
 extensions	docs/source/conf.py	/^extensions = [$/;"	v
 getPosition	arduino_script/stepper/MyStepper.cpp	/^long Stepper::getPosition(){$/;"	f	class:Stepper	typeref:typename:long
+get_info	sensactino/sensor.py	/^    def get_info(self):$/;"	m	class:Sensor
 hello world	docs/source/library_reference.rst	/^hello world$/;"	s	chapter:Library Reference
 help	docs/Makefile	/^help:$/;"	t
 help	docs/make.bat	/^:help$/;"	l
@@ -109,7 +110,7 @@ layer1	docs/source/_static/logo.svg	/^     id="layer1">$/;"	i
 locatePinSector	arduino_script/stepper/MyStepper.cpp	/^char Stepper::locatePinSector(uint8_t pin){ $/;"	f	class:Stepper	typeref:typename:char
 long_description	setup.py	/^long_description = (here \/ 'README.rst').read_text(encoding='utf-8')$/;"	v
 master_doc	docs/source/conf.py	/^master_doc = 'index' # In case it's defaulted to another file.$/;"	v
-measure	sensactino/sensor.py	/^    def measure(self):$/;"	m	class:Sensor
+measure	sensactino/sensor.py	/^    def measure(self, if_error="l"):$/;"	m	class:Sensor
 metadata860	docs/source/_static/logo.svg	/^     id="metadata860">$/;"	i
 move	sensactino/stepper.py	/^    def move(self, displacement):$/;"	m	class:Stepper
 moveTo	arduino_script/stepper/MyStepper.cpp	/^void Stepper::moveTo(long absolute){$/;"	f	class:Stepper	typeref:typename:void
@@ -132,7 +133,6 @@ setPosition	arduino_script/stepper/MyStepper.cpp	/^void Stepper::setPosition(lon
 setSpeed	arduino_script/stepper/MyStepper.cpp	/^void Stepper::setSpeed(unsigned int speed){$/;"	f	class:Stepper	typeref:typename:void
 step	arduino_script/stepper/MyStepper.cpp	/^void Stepper::step(){$/;"	f	class:Stepper	typeref:typename:void
 sweep	arduino_script/stepper/MyStepper.cpp	/^void Stepper::sweep(uint8_t pin1, uint8_t pin2){$/;"	f	class:Stepper	typeref:typename:void
-talk	sensactino/sensor.py	/^    def talk(self):$/;"	m	class:Sensor
 templates_path	docs/source/conf.py	/^templates_path = ['_templates']$/;"	v
 text1435	docs/source/_static/logo.svg	/^       id="text1435"><tspan$/;"	i
 text1439	docs/source/_static/logo.svg	/^       id="text1439"><tspan$/;"	i
