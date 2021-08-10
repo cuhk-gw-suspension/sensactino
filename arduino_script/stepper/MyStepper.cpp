@@ -161,7 +161,6 @@ void Stepper::setOutputPins(uint8_t pin, bool state){
 
 
 bool readPin(uint8_t pin){
-    char sector;
     if (pin < 8){
         return ((PIND & (1 << pin)) >> pin);
     }

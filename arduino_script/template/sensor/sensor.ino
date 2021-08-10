@@ -43,7 +43,7 @@ void setup() {
 
   ADS.begin();
   ADS.setGain(0);        // +-6.144 volt
-  ADS.setDataRate(7);    // fast
+  ADS.setDataRate(5);    // 250Hz
 
   // SET ALERT RDY PIN
   ADS.setComparatorThresholdHigh(0x8000);
