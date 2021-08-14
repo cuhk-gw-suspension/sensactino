@@ -52,4 +52,21 @@ class Actuator:
         else:
             raise TypeError("position must be of type int.")
 
+    def info(self):
+        """Request the arduino to serial print information about the actuator.
+
+        Returns
+        -------
+        str
+            information about the actuator.
+        """
+        cmd = "I\n"
+        cmd = cmd.encode("ascii")
+        _send_command(self.Serial, cmd)
+        msg = self.Serial.readline()
+        msg = msg.decode()
+        print(msg)
+        return msg
+
+
 

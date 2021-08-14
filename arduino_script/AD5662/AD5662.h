@@ -1,5 +1,5 @@
-#ifndef L298N_h
-    #define L298N_h
+#ifndef AD5662_h
+    #define AD5662_h
 
 #include <stdlib.h>
 #if ARDUINO >= 100
@@ -17,6 +17,8 @@
 #endif
 
 // select voltage based on the sign and magnitude of the passed value
-void actuate(long *val, uint8_t pins[2]);
+void actuate(long *val, uint8_t din, uint8_t sclk, uint8_t sync);
 
+// write byte function for function actuate. byteorder: little
+void _writeByte(uint8_t din, uint8_t sclk, uint8_t byte);
 #endif

@@ -1,9 +1,8 @@
 #include <ADS1X15.h>
 
 ADS1115 ADS(0x48);
-//int sensorPin = A0;    // select the input pin for the potentiometer
 long sensorValue = 0;  // variable to store the value coming from the sensor
-const uint8_t channel = 0;
+const uint8_t channel = 0; // ADS1115's analogIn channel
 const int nbyte_msg = 7;    // byte length of the msg
 const byte header = (byte) '\t';
 const byte footer = (byte) '\n';
@@ -22,7 +21,7 @@ void fastSerialPrintln(T value){
   msg[0] = header;
   while (Serial.availableForWrite() < nbyte_msg) { ;}
 
-  // parse value to bytes in msg array
+  // parse value to bytes into msg array
   for (int i = 0; i < len; i++) {
       msg[nbyte_msg-2-len+i] = (byte) ((value >> (len-i-1)*8) & 0xFF);
   }
@@ -42,7 +41,7 @@ void setup() {
   while (!Serial) {;}
 
   ADS.begin();
-  ADS.setGain(0);        // +-6.144 volt
+  ADS.setGain(1);        // +-4.096 volt
   ADS.setDataRate(5);    // 250Hz
 
   // SET ALERT RDY PIN
@@ -78,6 +77,7 @@ void adsReady()
   RDY = true;
 }
 
+// check if the conversion is ready.
 void handleConversion()
 {
 if (RDY)

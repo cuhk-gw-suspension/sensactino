@@ -1,5 +1,5 @@
-#ifndef L298N_h
-    #define L298N_h
+#ifndef DirectAccess_h
+    #define DirectAccess_h
 
 #include <stdlib.h>
 #if ARDUINO >= 100
@@ -16,7 +16,13 @@
     #define YIELD;
 #endif
 
-// select voltage based on the sign and magnitude of the passed value
-void actuate(long *val, uint8_t pins[2]);
+// initialize provide pin as output
+void initOutputPin(uint8_t pin);
+
+// set provide pin as HIGH or LOW
+void setOutputPin(uint8_t pin, bool state);
+
+// read digital pin. If HIGH, returns 1. If LOW, returns 0.
+bool readPin(uint8_t pin)
 
 #endif

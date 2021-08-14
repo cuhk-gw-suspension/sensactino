@@ -1,5 +1,5 @@
-#ifndef L298N_h
-    #define L298N_h
+#ifndef MyParseNumber_h
+    #define MyParseNumber_h
 
 #include <stdlib.h>
 #if ARDUINO >= 100
@@ -16,7 +16,6 @@
     #define YIELD;
 #endif
 
-// select voltage based on the sign and magnitude of the passed value
-void actuate(long *val, uint8_t pins[2]);
+void myParseInt_(long *pos, char *number, char delimiter);
 
 #endif

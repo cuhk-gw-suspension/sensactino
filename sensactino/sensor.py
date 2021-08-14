@@ -10,7 +10,7 @@ class Sensor:
         Parameters
         ----------
         port : str
-            Path to the stepper serial control port.
+            Path to the sensor serial port.
         baudrate: int
             Baudrate of the serial communication.
         timeout: int, optional
@@ -22,7 +22,7 @@ class Sensor:
         self._value = 0
 
     def __enter__(self):
-        """Open serial port to the stepper using parameters from __init__.
+        """Open serial port to the sensor using parameters from __init__.
         """
         self.Serial = Serial(**self._serial_para)
         time.sleep(.1)
@@ -33,7 +33,7 @@ class Sensor:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        """Safely close serial port to the stepper.
+        """Safely close serial port to the sensor.
         """
         self.Serial.close()
 
