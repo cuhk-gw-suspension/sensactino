@@ -1,5 +1,5 @@
-#ifndef MyParseNumber_h
-    #define MyParseNumber_h
+#ifndef DirectAccess_h
+    #define DirectAccess_h
 
 #include <stdlib.h>
 #if ARDUINO >= 100
@@ -16,10 +16,13 @@
     #define YIELD;
 #endif
 
-/* void myParseInt_(long *pos, char *number, char delimiter); */
-/* long myParseInt(); */
+// initialize provide pin as output
+void initOutputPin(uint8_t pin);
 
-// byteorder is little.
-void bytesToLong_(long *pos, char *number);
+// set provide pin as HIGH or LOW
+void setOutputPin(uint8_t pin, bool state);
+
+// read digital pin. If HIGH, returns 1. If LOW, returns 0.
+bool readPin(uint8_t pin)
 
 #endif

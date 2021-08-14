@@ -26,9 +26,8 @@ public:
     Stepper(uint8_t pul_pin = 2, uint8_t dir_pin = 3);
      
     // sweep the track and centre the table. 
-    // pin1, pin2 are pin of the limit switches at boundaries.
     // LOW indicates trigger of the switch. (PULLUP mode)
-    void sweep(uint8_t pin1, uint8_t pin2);
+    void reset(uint8_t enable_pin);
 
     // setting the target position in terms of absolute position
     // positive direction is indicated by DIR_pin=LOW, vice versa.
@@ -42,7 +41,7 @@ public:
     
     // set pulse width, in microseconds.
     // default to 3 us.
-    /* void setPulseWidth(unsigned int); */
+    void setPulseWidth(unsigned int);
 
     // function to call in the arduino loop
     void run();
@@ -59,16 +58,8 @@ public:
     // set current position as pos in absolute position
     void setPosition(long pos);
 
-private:
-    // locate which data register sector the pin is on. 'B' or 'D'.
-    char locatePinSector(uint8_t pin);
-    
-    // initialize provide pin as output
-    void initOutputPins(uint8_t pin);
-    
-    // set provide pin as HIGH or LOW
-    void setOutputPins(uint8_t pin, bool state);
-    
+// private:
+     
 protected:
     // current position in terms of absolute position
     volatile long _currentPos;
