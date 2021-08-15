@@ -14,7 +14,7 @@ A library for controlling sensors and actuator from python through arduino slave
 * Control the output of actuator.
 * Retrieve the readout from sensors.
 
-**Documentation**: https://serial-monitor.readthedocs.io
+**Documentation**: https://sensactino.readthedocs.io
 
 **Repository**: https://github.com/cuhk-gw-suspension/sensactino
 
@@ -45,6 +45,12 @@ Install from source
    git clone https://github.com/cuhk-gw-suspension/sensactino.git
    cd sensactino
    pip install .
+
+Basic Usage
+-----------
+
+
+
 
 How to Contribute
 =================
