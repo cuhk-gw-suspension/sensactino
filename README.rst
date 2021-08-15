@@ -4,18 +4,19 @@
 
 |website| |release| |rtd| |license| |travis-ci| |codecov|
 
-Serial Monitor
-==============
+Sensactino
+==========
 
-Read Arduino serial outputs.
+A library for controlling sensors and actuator from python through arduino slaves.
 
 **features**
 
-* Print serial outputs
+* Control the output of actuator.
+* Retrieve the readout from sensors.
 
 **Documentation**: https://serial-monitor.readthedocs.io
 
-**Repository**: https://github.com/cuhk-gw-suspension/serial-monitor
+**Repository**: https://github.com/cuhk-gw-suspension/sensactino
 
 .. contents::
    :depth: 2
@@ -29,7 +30,6 @@ Dependencies
 Required
 ^^^^^^^^
 * NumPy
-* Matplotlib
 * pySerial
 
 Optional
@@ -42,8 +42,8 @@ Install from source
 
 .. code:: bash
 
-   git clone https://github.com/cuhk-gw-suspension/serial-monitor.git
-   cd serial-monitor
+   git clone https://github.com/cuhk-gw-suspension/sensactino.git
+   cd sensactino
    pip install .
 
 How to Contribute
