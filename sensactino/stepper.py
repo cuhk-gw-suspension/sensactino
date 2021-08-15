@@ -50,12 +50,7 @@ class Stepper:
             the function is called.
         """
         if isinstance(position, int) or np.issubdtype(position, np.integer):
-            # cmd = [b'M',
-            #        position.to_bytes(4, byteorder="big", signed=True),
-            #        b'\n']
-            # cmd = b"".join(cmd)
-            cmd = "M" + str(position) + "\n"
-            _send_command(self.serial, cmd)
+            _send_command(self.serial, "M", value=int(position))
         else:
             raise TypeError("position must be of type int.")
 
@@ -73,21 +68,27 @@ class Stepper:
         """
         if isinstance(displacement, int) or \
            np.issubdtype(displacement, np.integer):
-            # cmd = [b'S',
-            #        displacement.to_bytes(4, byteorder="big", signed=True),
-            #        b'\n']
-            # cmd = b"".join(cmd)
-            cmd = "S" + str(displacement) + "\n"
-            _send_command(self.serial, cmd)
+            _send_command(self.serial, "S", value=int(displacement))
         else:
             raise TypeError("displacement must be of type int.")
 
 
-    # def reset(self):
-    #     """Move the stepper to the center of the rail.
-    #     """
-    #     cmd = "R\n"
-    #     cmd = cmd.encode("ascii")
-    #     self.serial.write(cmd)
+    def reset(self):
+        """Move the stepper to the center of the rail.
+        """
+        _send_command(self.serial, "R")
 
+    def info(self):
+        """Request the arduino to print information about itself.
+
+        Returns
+        -------
+        msg : str
+            information about the actuator.
+        """
+        _send_command(self.serial, "I")
+        msg = self.Serial.readline()
+        msg = msg.decode()
+        print(msg)
+        return msg
 

@@ -1,6 +1,6 @@
 import serial
 import time
-from .core.utils import _addsum, _int2bytes, _send_command
+from .core.utils import _send_command
 
 class Actuator:
     def __init__(self, port, baudrate, timeout=5):
@@ -41,14 +41,10 @@ class Actuator:
         ----------
         value : int
             value to send to the Actuator.
+            Maximum 32bits.
         """
         if isinstance(value, int) or np.issubdtype(value, np.integer):
-            # value = _int2bytes(value)
-            # checksum = _addsum(value)
-            value = str(value)
-            cmd = "S" + value + "\n"
-            cmd = cmd.encode("ascii")
-            _send_command(self.Serial, cmd)
+            _send_command(self.Serial, "S", value=value)
         else:
             raise TypeError("position must be of type int.")
 
@@ -57,12 +53,10 @@ class Actuator:
 
         Returns
         -------
-        str
+        msg : str
             information about the actuator.
         """
-        cmd = "I\n"
-        cmd = cmd.encode("ascii")
-        _send_command(self.Serial, cmd)
+        _send_command(self.serial, "I")
         msg = self.Serial.readline()
         msg = msg.decode()
         print(msg)

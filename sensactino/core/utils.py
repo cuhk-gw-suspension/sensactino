@@ -69,19 +69,33 @@ def _int2bytes(x, byteorder="big", signed=True):
     return y
 
 
-def _send_command(serial_device, cmd):
+def _send_command(serial_device, cmd, value=0, signed=True):
     """Handle the byte conversion and send the command to the serial device.
+    Protocol: | header | cmd | value | checksum | footer |
 
     Parameters
     ----------
-    serial_device: pyserial's Serial object.
+    serial_device : pyserial's Serial object.
         The serial device to send command to.
-    cmd : str-like
-        command to be sent to the stepper.
+    cmd : str
+        a character to be sent to the arduino for interpretation.
+    value : int
+        value to write in the data session, maxmimum 4 bytes.
+        Default to 0.
+    signed : bool, optional
+        Select whether the bytes converted from value is signed or not.
+        Default is True.
     """
-    if isinstance(cmd, str):
-        cmd = cmd.encode("ascii")
-
-    if not isinstance(cmd, (bytes, bytearray)):
+    if not isinstance(cmd, str):
         raise TypeError("cmd must be string-like object")
-    serial_device.write(cmd)
+    if len(cmd) > 1:
+        raise ValueError("cmd must be a single character")
+    if value.bit_length > 32:
+        raise ValueError("value is too large to be sent over")
+
+    msg = bytes(cmd)
+    msg += value.to_bytes(4, byteorder="little", signed=signed)
+    msg += _addsum(msg)
+    msg = b'\t'+ msg + b'\n'
+    serial_device.write(msg)
+
