@@ -68,7 +68,7 @@ class Sensor:
             if if_error == "r" or if_error == "read again":
                 self.measure(if_error=if_error)
         else:
-            value = int.from_bytes(msg, byteorder="big", signed=True)
+            value = int.from_bytes(msg, byteorder="little", signed=True)
             self._value = value
         return value
 

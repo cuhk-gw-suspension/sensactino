@@ -23,6 +23,6 @@ void initOutputPin(uint8_t pin);
 void setOutputPin(uint8_t pin, bool state);
 
 // read digital pin. If HIGH, returns 1. If LOW, returns 0.
-bool readPin(uint8_t pin)
+bool readPin(uint8_t pin);
 
 #endif

@@ -29,8 +29,8 @@ def _addsum(arr):
 
     Returns
     -------
-    addsum: bytes
-        the checksum byte.
+    addsum: int
+        the checksum byte as integer.
     """
     if not isinstance(arr, (bytes, bytearray, list)):
         raise TypeError("invalid type of arr:", type(arr))
@@ -90,12 +90,12 @@ def _send_command(serial_device, cmd, value=0, signed=True):
         raise TypeError("cmd must be string-like object")
     if len(cmd) > 1:
         raise ValueError("cmd must be a single character")
-    if value.bit_length > 32:
+    if value.bit_length() >= 32:
         raise ValueError("value is too large to be sent over")
 
-    msg = bytes(cmd)
+    msg = cmd.encode("ascii")
     msg += value.to_bytes(4, byteorder="little", signed=signed)
-    msg += _addsum(msg)
+    msg += bytes([_addsum(msg)])
     msg = b'\t'+ msg + b'\n'
     serial_device.write(msg)
 

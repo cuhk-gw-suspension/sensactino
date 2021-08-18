@@ -13,8 +13,8 @@ const uint8_t sequence_length = 8; // protocol
 volatile char incomingBytes[8] = {}; 
 // #dont know if null byte termination is needed,
 // so array-size is 8 to be safe.
-volatile long pos;      // target aboslute position
-volatile long disp;     // target relative position
+long pos;      // target aboslute position
+long disp;     // target relative position
 
 
 void parseBytes(char header='\t', char footer='\n'){
@@ -35,7 +35,7 @@ void parseBytes(char header='\t', char footer='\n'){
         c ^= incomingBytes[i];
     // handle invalid sequence.
     if (incomingBytes[6] != footer or c != '\0')
-        goto run;
+        goto skip;
    
     c = incomingBytes[0]; 
     if (isupper(c)){
@@ -45,19 +45,21 @@ void parseBytes(char header='\t', char footer='\n'){
             stepper1.reset(4); // enable_pin = 4, grounded = enabled
             break;
         case('S'):
-            bytesToLong_(&disp, incomingBytes + 1, footer);
+            bytesToLong_(&disp, incomingBytes + 1);
             pos += disp;
             stepper1.moveTo(pos);
             break;
         case('M'):
-            bytesToLong_(&pos, incomingBytes + 1, footer);
+            bytesToLong_(&pos, incomingBytes + 1);
             stepper1.moveTo(pos);
+//            Serial.println(pos);
             break;
         case('I'):
             Serial.println(info);
             break;
         }
     }
+skip: ;
 }
 
 void setup() {
@@ -65,7 +67,7 @@ void setup() {
     
     // caution, delay under 3 us is inaccurate. 
     stepper1.setSpeed(50000); // number of steps per sec.
-    Serial.print(info);
+    Serial.print(info);//
     Serial.println(", port established");
 }
 
@@ -74,6 +76,5 @@ void loop() {
     if (Serial.available() >= sequence_length){
         parseBytes();
     }
-run:
     stepper1.run(); 
 }

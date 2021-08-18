@@ -17,9 +17,6 @@
 #endif
 
 
-// read the Pin state, HIGH or LOW.
-bool readPin(uint8_t pin);
-
 class Stepper{
 public:
     //default Stepper object, 
@@ -74,14 +71,13 @@ protected:
     unsigned int _step_interval;
 
     // time to wait between HIGH and LOW, in microsec.
-    const unsigned int _pulse_width = 3;
+    unsigned int _pulse_width = 3;
 
     uint8_t _pul_pin;
     uint8_t _dir_pin;
 
     // current direction, true = HIGH, false = LOW
     bool _direction;
-    
 };
 
 

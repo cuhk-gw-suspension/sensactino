@@ -7,7 +7,7 @@ const uint8_t sync_pin = 2;
 const char info[64] = "I am an actuator"; //change for individual actuator
 
 
-volatile uint16_t value;                // incoming value from pc
+volatile long value;                // incoming value from pc
 
     //   1   | 1 | 4  | 1 |  1 
     // header|cmd|data|sum|footer
@@ -35,27 +35,27 @@ void parseBytes(char header='\t', char footer='\n'){
         c ^= incomingBytes[i];
     // handle invalid sequence.
     if (incomingBytes[6] != footer or c != '\0')
-        goto run;
+        goto skip;
    
     c = incomingBytes[0];  // change to 1 when multiple device
 
     if (isupper(c)){
         switch(c){
         case('S'):
-            myParseInt_(&value, incomingBytes + 1, footer);
-            /* Serial.println(value); */
+            bytesToLong_(&value, incomingBytes + 1);
+            Serial.println(value);
             break;
-
         case('I'):
             Serial.println(info);
             break;
         }
     }
+skip: ;
 }
 
 void setup(){
   Serial.begin(500000);
-  while (!Serial) { ;}
+//  while (!Serial) { ;}/
 
   Serial.print(info);
   Serial.println(", port established");
@@ -67,9 +67,8 @@ void setup(){
 
 void loop() {
     // actual code
-run:
   if (Serial.available() > sequence_length){
     parseBytes();
-    actuate(&value, din_pin, sclk_pin, sync_pin);
+    actuate((uint16_t)value, din_pin, sclk_pin, sync_pin);
   }
 }

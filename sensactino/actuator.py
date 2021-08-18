@@ -3,7 +3,7 @@ import time
 from .core.utils import _send_command
 
 class Actuator:
-    def __init__(self, port, baudrate, timeout=5):
+    def __init__(self, port, baudrate, timeout=8):
         """Save configuration of the serial communication for the Actuator.
 
         Parameters
@@ -26,7 +26,8 @@ class Actuator:
         self.Serial.flush()
         while( self.Serial.out_waiting != 0):  # wait for flush to finish
             time.sleep(.1)
-        print(self.Serial.readline().decode())
+        line = self.Serial.readline()
+        print(line.decode('utf-8'))
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
@@ -56,7 +57,7 @@ class Actuator:
         msg : str
             information about the actuator.
         """
-        _send_command(self.serial, "I")
+        _send_command(self.Serial, "I")
         msg = self.Serial.readline()
         msg = msg.decode()
         print(msg)

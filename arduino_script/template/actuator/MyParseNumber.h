@@ -16,6 +16,10 @@
     #define YIELD;
 #endif
 
-void myParseInt_(long *pos, char *number, char delimiter);
+/* void myParseInt_(long *pos, char *number, char delimiter); */
+/* long myParseInt(); */
+
+// byteorder is little.
+void bytesToLong_(long *pos, char *number);
 
 #endif

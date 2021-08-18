@@ -18,6 +18,5 @@
 void bytesToLong_(long *pos, char *number){
   *pos = 0;
   for (int i = 0; i < 4; i++)
-    *pos |= (long) ((byte)number[i] << (i*8));
+    *pos |= ((long) ((byte)number[i])) << i*8;
 }
-

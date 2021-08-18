@@ -10,10 +10,10 @@ Stepper::Stepper(uint8_t pul_pin, uint8_t dir_pin){
 
     _step_interval = 10; // us
 
-    initOutputPins(_pul_pin);
-    initOutputPins(_dir_pin);
+    initOutputPin(_pul_pin);
+    initOutputPin(_dir_pin);
 
-    setOutputPins(pul_pin, LOW);
+    setOutputPin(pul_pin, LOW);
 }
 
 void Stepper::reset(uint8_t enable_pin){
@@ -39,7 +39,6 @@ void Stepper::reset(uint8_t enable_pin){
     moveTo(0);
     while (distanceToGo() != 0)
         run();
-    }
     _bound_set = true;
 }
 
@@ -54,7 +53,7 @@ void Stepper::moveTo(long absolute){
 
 void Stepper::setDirection(bool direction){
     _direction = direction;
-    setOutputPins(_dir_pin, _direction);
+    setOutputPin(_dir_pin, _direction);
 }
 
 void Stepper::setSpeed(unsigned int speed){
@@ -81,9 +80,9 @@ void Stepper::run(){
 }
 
 void Stepper::step(){
-    setOutputPins(2, HIGH);
+    setOutputPin(2, HIGH);
     delayMicroseconds(_pulse_width); 
-    setOutputPins(2, LOW);
+    setOutputPin(2, LOW);
 }
 
 long Stepper::getPosition(){

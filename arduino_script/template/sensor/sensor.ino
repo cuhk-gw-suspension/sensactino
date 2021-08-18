@@ -23,7 +23,7 @@ void fastSerialPrintln(T value){
 
   // parse value to bytes into msg array
   for (int i = 0; i < len; i++) {
-      msg[nbyte_msg-2-len+i] = (byte) ((value >> (len-i-1)*8) & 0xFF);
+      msg[nbyte_msg-6+i] = (byte) ((value >> i*8) & 0xFF);
   }
   
   // checksum using XOR
