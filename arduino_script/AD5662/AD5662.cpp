@@ -13,10 +13,12 @@ void actuate(uint16_t val, uint8_t din, uint8_t sclk, uint8_t sync){
   setOutputPin(sync, HIGH);
 }
 
-void _writeByte(uint8_t din, uint8_t sclk, uint8_t byte) {
+void _writeByte(uint8_t din, uint8_t sclk, uint8_t thebyte) {
   for (uint8_t j = 0; j < 8; j++) {
       setOutputPin(sclk, HIGH);
-      setOutputPin(din, (byte >> (7 - j)) & 0x01);
+      delayMicroseconds(1);
+      setOutputPin(din, (thebyte >> (7 - j)) & 0x01);
+      delayMicroseconds(1);
       setOutputPin(sclk, LOW);
   }
 }

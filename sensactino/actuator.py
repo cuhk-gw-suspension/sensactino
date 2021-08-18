@@ -26,8 +26,8 @@ class Actuator:
         self.Serial.flush()
         while( self.Serial.out_waiting != 0):  # wait for flush to finish
             time.sleep(.1)
-        line = self.Serial.readline()
-        print(line.decode('utf-8'))
+        # line = self.Serial.readline()
+        # print(line.decode('utf-8'))
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):

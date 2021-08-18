@@ -20,5 +20,5 @@
 void actuate(uint16_t val, uint8_t din, uint8_t sclk, uint8_t sync);
 
 // write byte function for function actuate. byteorder: little
-void _writeByte(uint8_t din, uint8_t sclk, uint8_t byte);
+void _writeByte(uint8_t din, uint8_t sclk, uint8_t thebyte);
 #endif

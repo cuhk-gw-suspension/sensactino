@@ -1,9 +1,9 @@
 #include "MyParseNumber.h"
 #include "AD5662.h"
 
-const uint8_t din_pin = 0;
-const uint8_t sclk_pin = 1;
-const uint8_t sync_pin = 2;
+const uint8_t din_pin = 4;
+const uint8_t sclk_pin = 3;
+const uint8_t sync_pin =  2;
 const char info[64] = "I am an actuator"; //change for individual actuator
 
 
@@ -42,7 +42,6 @@ void parseBytes(char header='\t', char footer='\n'){
         switch(c){
         case('S'):
             bytesToLong_(&value, incomingBytes + 1);
-            Serial.println(value);
             break;
         case('I'):
             Serial.println(info);
