@@ -8,16 +8,15 @@ const uint8_t LEN = 24;
 void actuate(uint16_t val, uint8_t din, uint8_t sclk, uint8_t sync){
   setOutputPin(sync, LOW);
   _writeByte(din, sclk, 0x00);
-  _writeByte(din, sclk, val & 0xFF);
   _writeByte(din, sclk, (val >> 8) & 0xFF);
+  _writeByte(din, sclk, val & 0xFF);
   setOutputPin(sync, HIGH);
 }
 
 void _writeByte(uint8_t din, uint8_t sclk, uint8_t byte) {
   for (uint8_t j = 0; j < 8; j++) {
       setOutputPin(sclk, HIGH);
-      setOutputPin(din, (byte >> j) & 0x01);
+      setOutputPin(din, (byte >> (7 - j)) & 0x01);
       setOutputPin(sclk, LOW);
   }
 }
-

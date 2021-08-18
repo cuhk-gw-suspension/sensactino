@@ -7,7 +7,7 @@ const uint8_t sync_pin = 2;
 const char info[64] = "I am an actuator"; //change for individual actuator
 
 
-volatile long value;                // incoming value from pc
+long value = 0;                // incoming value from pc
 
     //   1   | 1 | 4  | 1 |  1 
     // header|cmd|data|sum|footer
@@ -15,13 +15,12 @@ const uint8_t sequence_length = 8; // protocol
 
 //  1 | 4  | 1 | 1 
 // cmd|data|sum|footer
-volatile char incomingBytes[8] = {}; // max length 7, min 3 
+char incomingBytes[8] = {}; // max length 7, min 3 
 // #dont know if null byte termination is needed,
 // so array-size is 8 to be safe.
 
 void parseBytes(char header='\t', char footer='\n'){
     volatile char c;
-    
     // start only when header is read.
     while (Serial.read() != header) { ;}
     // wait for following bytes, if needed.
@@ -38,7 +37,7 @@ void parseBytes(char header='\t', char footer='\n'){
         goto skip;
    
     c = incomingBytes[0];  // change to 1 when multiple device
-
+    
     if (isupper(c)){
         switch(c){
         case('S'):
@@ -67,7 +66,7 @@ void setup(){
 
 void loop() {
     // actual code
-  if (Serial.available() > sequence_length){
+  if (Serial.available() >= sequence_length){
     parseBytes();
     actuate((uint16_t)value, din_pin, sclk_pin, sync_pin);
   }
