@@ -28,8 +28,8 @@ class Stepper:
         self.serial.flush()
         while( self.serial.out_waiting != 0):       # wait for flush to finish
             time.sleep(.001)
-        line = self.serial.readline()
-        print(line.decode('utf-8'))
+        # line = self.serial.readline()
+        # print(line.decode('utf-8'))
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
