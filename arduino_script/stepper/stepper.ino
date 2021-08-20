@@ -10,7 +10,7 @@ Stepper stepper1(2, 3); //init pul pin=2, dir pin=3
 const uint8_t sequence_length = 8; // protocol 
 //  1 | 4  | 1 |  1 
 // cmd|data|sum|footer
-volatile char incomingBytes[8] = {}; 
+char incomingBytes[8] = {}; 
 // #dont know if null byte termination is needed,
 // so array-size is 8 to be safe.
 long pos;      // target aboslute position
@@ -67,8 +67,8 @@ void setup() {
     
     // caution, delay under 3 us is inaccurate. 
     stepper1.setSpeed(50000); // number of steps per sec.
-    Serial.print(info);//
-    Serial.println(", port established");
+//    Serial.print(info);
+//    Serial.println(", port established");
 }
 
 void loop() {

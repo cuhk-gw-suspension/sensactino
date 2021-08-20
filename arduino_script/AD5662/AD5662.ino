@@ -55,8 +55,8 @@ void setup(){
   Serial.begin(500000);
 //  while (!Serial) { ;}/
 
-  Serial.print(info);
-  Serial.println(", port established");
+//  Serial.print(info);
+//  Serial.println(", port established");
   pinMode(din_pin, OUTPUT);
   pinMode(sclk_pin, OUTPUT);
   pinMode(sync_pin, OUTPUT);
