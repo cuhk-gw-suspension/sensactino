@@ -13,7 +13,7 @@ class ReadLine:
         self.buf = b""
         self.Serial = serial_device
 
-    def readonce(self, chunk_size=7, header=b'\t', footer=b'\n'):
+    def readonce(self, chunk_size=7, header=b'\t', footer=b'\n', debug=False):
         """Read the first complete chunk of data from the serial port.
         format: | header (1)| msg (n) | checksum (1) | footer (1) |
         *number in () indicates number of bytes.
@@ -35,10 +35,10 @@ class ReadLine:
         """
         if len(header) != 1 or len(footer) != 1:
             raise ValueError("invalid length of bytes for header or footer")
-        # header = int.from_bytes(header, byteorder="big")
-        # footer = int.from_bytes(footer, byteorder="big")
 
         tmp = self.buf + self.Serial.read(chunk_size)
+        if debug:
+            print(debug)
         pattern = rb"(%s)(.{%d})(%s)"%(header, chunk_size - 2, footer)
         m = re.match(pattern, tmp)
         if m is None:

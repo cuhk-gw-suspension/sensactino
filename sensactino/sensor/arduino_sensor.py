@@ -1,9 +1,10 @@
 from serial import Serial
 import time
-from .core.fastread import ReadLine
-from .core.utils import _checksum
 
-class Sensor:
+from .base import Sensor
+from sensactino.core import ReadLine, _checksum
+
+class ArduinoSensor(Sensor):
     def __init__(self, port, baudrate, timeout=1):
         """Save configuration of the serial communication from the sensor.
 
@@ -16,6 +17,7 @@ class Sensor:
         timeout: int, optional
             Timeout of the serial communication.
         """
+        super().__init__()
         self._serial_para = {"port": port,
                              "baudrate": baudrate,
                              "timeout": timeout}
@@ -37,9 +39,8 @@ class Sensor:
         """
         self.Serial.close()
 
-    def get_info(self):
-        """Read info about the sensor.
-        """
+    def info(self):
+        """Read info about the sensor."""
         self.Serial.write(b"i")
         info = self.Serial.readline()
         print(info)
@@ -61,12 +62,13 @@ class Sensor:
         value : int
         """
         self.Serial.write(b"r")
-        msg = self.FastRead.readonce()
+        msg = self.FastRead.readonce(debug=self.debug)
+
         if msg is None:
             if if_error == "l" or if_error == "use last value":
                 value = self._value
             if if_error == "r" or if_error == "read again":
-                self.measure(if_error=if_error)
+                self._measure(if_error=if_error)
         else:
             value = int.from_bytes(msg, byteorder="little", signed=True)
             self._value = value
@@ -94,7 +96,7 @@ class Sensor:
     #     value = int.from_bytes(line, byteorder="big", signed=True)
     #     return value
 
-    def read(self):
+    def read_all(self):
         """Read all bytes from the sensor.
         Use for debugging.
         Caution: This method reads byte regardless of whether the transmission
@@ -108,6 +110,5 @@ class Sensor:
         n = self.Serial.in_waiting
         line = self.Serial.read(n)
         return line
-
 
 
